@@ -116,7 +116,9 @@ class Baffle {
                 if (!elements.length) {
                     this.stop();
                     each(this.elements, el => el.init());
-                    if (callback && typeof callback === "function") callback()
+                    if (callback && typeof callback === "function") {
+                      callback();
+                    }
                 }
 
             }, this.options.speed);
