@@ -90,8 +90,10 @@ class Baffle {
     *
     * Once all elements are revealed, call stop() and
     * initialize each element.
+    *
+    * @andrewsgyamfi - added a callback to be triggered when done
     */
-    reveal(duration = 0, delay = 0) {
+    reveal(duration = 0, delay = 0, callback) {
         // Number of cycles in duration
         let cycles = duration / this.options.speed || 1;
 
@@ -114,6 +116,7 @@ class Baffle {
                 if (!elements.length) {
                     this.stop();
                     each(this.elements, el => el.init());
+                    if (callback && typeof callback === "function") callback()
                 }
 
             }, this.options.speed);
